@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12">
+        <h3>Adicionar Novo Post</h3>
+        <form action="" [formGroup]="form" (ngSubmit)="add()">
+            <div class="mb-3">
+                <label for="">Title</label>
+                <input type="text" class="form-control" formControlName="title">
+                <div *ngIf="form.get('title')?.touched && !form.get('title')?.valid">
+                    <div class="text-danger" *ngIf="form.get('title')?.errors!['required']">Title is required</div>
+                    <div class="text-danger"  *ngIf="form.get('title')?.errors!['minlength']">Title should be min 6 characters</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="">Description</label>
+                <textarea cols="30" rows="10" class="form-control" formControlName="description"></textarea>
+            </div>
+            <div class="my-3 d-flex justify-content-end">
+                <input [disabled]="!form.valid" class="btn btn-dark" type="submit"/>
+            </div>
+        </form>
+    </div>
+</div>
